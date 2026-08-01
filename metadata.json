@@ -1,0 +1,6 @@
+{
+  "name": "CivicEye Vizag",
+  "description": "AI-Powered Road Defect & Infrastructure Intelligence Platform for GVMC (Team Allide - HackYatra 2026)",
+  "requestFramePermissions": ["geolocation", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

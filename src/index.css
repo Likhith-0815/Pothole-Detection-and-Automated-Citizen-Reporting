@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --gvmc-primary: #0A2540;
+    --gvmc-primary-dark: #06182B;
+    --gvmc-primary-light: #1E3A8A;
+    --gvmc-secondary: #0284C7;
+    --gvmc-accent: #D4AF37;
+    --gvmc-success: #16A34A;
+    --gvmc-warning: #D97706;
+    --gvmc-danger: #DC2626;
+    --gvmc-background: #F8FAFC;
+    --gvmc-surface: #FFFFFF;
+    --gvmc-border: #E2E8F0;
+    --gvmc-text: #0F172A;
+    --gvmc-text-muted: #475569;
+
+    --bg-primary: #F8FAFC;
+    --bg-secondary: #FFFFFF;
+    --card-bg: #FFFFFF;
+    --primary-blue: #1E3A8A;
+    --ai-cyan: #0284C7;
+    --purple-accent: #6D28D9;
+    --success: #16A34A;
+    --warning: #D97706;
+    --critical: #DC2626;
+    --text-white: #0F172A;
+    --text-muted: #475569;
+  }
+
+  body {
+    background-color: #F8FAFC;
+    color: #0F172A;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+/* Professional Government Theme Classes */
+.pro-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+.pro-header {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+}
+
+.pro-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #475569;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+.pro-value {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.2;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.status-dot-success {
+  background-color: #16A34A;
+}
+
+.status-dot-critical {
+  background-color: #DC2626;
+}
+
+.status-dot-warning {
+  background-color: #D97706;
+}
+
+.status-dot-cyan {
+  background-color: #0284C7;
+}
+
+.pro-progress-bar {
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.pro-progress-fill {
+  height: 100%;
+  background: #0284C7;
+  border-radius: 3px;
+}
+
+/* Light Municipal UI Panel components */
+.glass-panel {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.glass-panel-hover {
+  transition: all 0.2s ease-in-out;
+}
+
+.glass-panel-hover:hover {
+  background: #FFFFFF;
+  border-color: #3B82F6;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+}
+
+.glass-card {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Leaflet map light theme styling */
+.leaflet-container {
+  background: #E2E8F0 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.leaflet-popup-tip {
+  background: #FFFFFF !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1E3A8A;
+}

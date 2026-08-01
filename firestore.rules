@@ -1,0 +1,68 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidString(val, minLen, maxLen) {
+      return val is string && val.size() >= minLen && val.size() <= maxLen;
+    }
+
+    function isValidIncident(data) {
+      return data.keys().hasAll(['title', 'locationName', 'ward', 'severity', 'status', 'reportedAt'])
+        && isValidString(data.title, 1, 200)
+        && isValidString(data.locationName, 1, 200)
+        && isValidString(data.ward, 1, 100)
+        && data.severity in ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW']
+        && data.status in ['REPORTED', 'AI_ANALYZED', 'DISPATCHED', 'IN_REPAIR', 'RESOLVED'];
+    }
+
+    function isValidCrew(data) {
+      return data.keys().hasAll(['name', 'status', 'assignedWard'])
+        && isValidString(data.name, 1, 100)
+        && isValidString(data.assignedWard, 1, 100)
+        && data.status in ['AVAILABLE', 'EN_ROUTE', 'ON_SITE', 'MAINTENANCE'];
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'role'])
+        && data.role in ['citizen', 'engineer', 'admin']
+        && isValidString(data.uid, 1, 128)
+        && isValidString(data.email, 1, 150);
+    }
+
+    // Default catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isSignedIn() && request.auth.uid == userId;
+      allow create, update: if isSignedIn() && request.auth.uid == userId && isValidUser(request.resource.data);
+      allow delete: if false;
+    }
+
+    // Incidents collection
+    match /incidents/{incidentId} {
+      allow read: if true;
+      allow create, update: if isValidIncident(request.resource.data);
+      allow delete: if isSignedIn();
+    }
+
+    // Fleet Crews collection
+    match /crews/{crewId} {
+      allow read: if true;
+      allow create, update: if isValidCrew(request.resource.data);
+      allow delete: if isSignedIn();
+    }
+
+    // Connection test document
+    match /test/{testId} {
+      allow read, write: if true;
+    }
+  }
+}
